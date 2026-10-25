@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#21130d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kokopelis">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<title>Kokopelis Combat Companion</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="rollFx" class="roll-fx" aria-live="polite"></div>
+<div id="imageLightbox" class="image-lightbox" onclick="if(event.target===this)closeImageLightbox()">
+  <div class="image-lightbox-card">
+    <div class="image-lightbox-head"><strong id="imageLightboxTitle">Reference</strong><button class="icon-btn" onclick="closeImageLightbox()">✕ Close</button></div>
+    <div class="image-lightbox-body"><img id="imageLightboxImg" src="" alt=""></div>
+  </div>
+</div>
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-card">
+    <div class="modal-head"><strong id="modalTitle">Details</strong><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div id="modalBody" class="modal-body"></div>
+  </div>
+</div>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">✦</span><div><b>Kokopelis</b><small>Combat Companion</small></div></div>
+  <nav class="page-tabs">
+    <button class="page-tab active" data-page="character">Character</button>
+    <button class="page-tab" data-page="summons">Summons</button>
+  </nav>
+  <div class="top-actions">
+    <button class="small-btn install-app-btn" onclick="installApp()" hidden>Install App</button>
+    <button class="small-btn" onclick="openCodex()">Codex</button>
+    <button class="small-btn" onclick="exportSave()">Export</button>
+    <button class="small-btn" onclick="resetFight()">End Fight</button>
+    <button class="small-btn" onclick="shortRest()">Short Rest</button>
+    <button class="small-btn accent" onclick="longRest()">Long Rest</button>
+  </div>
+</header>
+<main>
+<section id="character" class="page active"></section>
+<section id="summons" class="page"></section>
+</main>
+<nav class="mobile-dock" aria-label="Mobile quick navigation">
+  <button onclick="mobileGo('combat')"><span>⚔</span><b>Combat</b></button>
+  <button onclick="mobileGo('resources')"><span>✦</span><b>Resources</b></button>
+  <button onclick="mobileGo('summons')"><span>♟</span><b>Summons</b></button>
+  <button onclick="mobileGo('sheet')"><span>📜</span><b>Sheet</b></button>
+</nav>
+<input id="importFile" type="file" accept=".json" hidden>
+<script src="app.js"></script>
+</body>
+</html>
