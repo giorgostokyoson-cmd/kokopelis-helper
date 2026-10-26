@@ -1,0 +1,10 @@
+/* V5.3 — compact summon cards while in RESERVE */
+/* Keep only the hero/header section visible for reserve summons. */
+.summon-card:not(:has(.tag-active)) > :not(.summon-hero){
+  display:none !important;
+}
+
+/* Active summons reveal their full stats, actions, spells and extra panels. */
+.summon-card:has(.tag-active) > :not(.summon-hero){
+  display:block;
+}
