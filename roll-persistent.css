@@ -1,0 +1,18 @@
+/* V5.1 — persistent dice-roll popup */
+.roll-fx.show{
+  animation:rollPopPersistent .38s ease both;
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+  pointer-events:auto;
+}
+.roll-close-hint{
+  margin-top:10px;
+  color:rgba(244,231,200,.62);
+  font-size:10px;
+  letter-spacing:.04em;
+}
+@keyframes rollPopPersistent{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.72)}
+  70%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}
+  100%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
