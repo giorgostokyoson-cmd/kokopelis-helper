@@ -1,7 +1,7 @@
-const CACHE = 'kokopelis-v5-core-2';
+const CACHE = 'kokopelis-v5-core-3';
 const CORE = [
   './', './index.html', './styles.css', './roll-persistent.css', './app.js', './roll-persistent.js', './manifest.webmanifest',
-  './icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./icons/apple-touch-icon.png',
+  './icons/kokopelis-face-192.jpg','./icons/kokopelis-face-512.jpg','./icons/kokopelis-face-maskable-512.jpg',
   './assets/sheet.jpg'
 ];
 self.addEventListener('install', event => {
