@@ -14,6 +14,7 @@
 <title>Kokopelis Combat Companion</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="roll-persistent.css">
+<link rel="stylesheet" href="characters.css">
 </head>
 <body>
 <div id="rollFx" class="roll-fx" aria-live="polite"></div>
@@ -34,6 +35,7 @@
   <nav class="page-tabs">
     <button class="page-tab active" data-page="character">Character</button>
     <button class="page-tab" data-page="summons">Summons</button>
+    <button class="page-tab" data-page="characters">Characters</button>
   </nav>
   <div class="top-actions">
     <button class="small-btn install-app-btn" onclick="installApp()" hidden>Install App</button>
@@ -47,6 +49,7 @@
 <main>
 <section id="character" class="page active"></section>
 <section id="summons" class="page"></section>
+<section id="characters" class="page"></section>
 </main>
 <nav class="mobile-dock" aria-label="Mobile quick navigation">
   <button onclick="mobileGo('combat')"><span>⚔</span><b>Combat</b></button>
@@ -57,5 +60,6 @@
 <input id="importFile" type="file" accept=".json" hidden>
 <script src="app.js"></script>
 <script src="roll-persistent.js"></script>
+<script src="characters.js"></script>
 </body>
 </html>
