@@ -90,8 +90,11 @@
 
   function applyOrder(grid){
     const cards=[...grid.querySelectorAll(':scope > .summon-card')];
+    const current=cards.map(card=>card.dataset.summonId).filter(Boolean);
+    const wanted=layout.order.filter(id=>current.includes(id));
+    if(current.length===wanted.length&&current.every((id,i)=>id===wanted[i]))return;
     const map=new Map(cards.map(card=>[card.dataset.summonId,card]));
-    layout.order.forEach(id=>{const card=map.get(id);if(card)grid.appendChild(card)});
+    wanted.forEach(id=>{const card=map.get(id);if(card)grid.appendChild(card)});
   }
 
   function setup(){
@@ -175,7 +178,6 @@
   function onDragEnd(){finishDrag(false)}
   function onDragCancel(){finishDrag(true)}
 
-  // Reapply controls/order after every existing summon render.
   const originalRender=window.renderSummons;
   if(typeof originalRender==='function'){
     window.renderSummons=function(){
