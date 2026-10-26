@@ -1,0 +1,17 @@
+/* V5.5 — draggable summon board */
+.summon-grid{align-items:start!important}
+.summon-card{position:relative;align-self:start}
+.summon-info{position:relative}
+.summon-layout-controls{position:absolute;top:9px;right:9px;display:flex;gap:5px;z-index:6;align-items:center}
+.summon-layout-btn{border:1px solid rgba(208,166,79,.34);background:rgba(20,13,9,.94);color:#ead7ad;border-radius:7px;padding:5px 7px;font-size:10px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22)}
+.summon-layout-btn:hover{border-color:#f1cf78}
+.summon-layout-btn.locked{color:#b9a88a;opacity:.82}
+.summon-layout-btn.unlocked{color:#f1cf78;border-color:#d0a64f}
+.summon-move-handle{cursor:grab;touch-action:none;user-select:none;font-size:14px;padding:4px 8px}
+.summon-move-handle:active{cursor:grabbing}
+.summon-move-handle[disabled]{cursor:not-allowed;opacity:.32}
+.summon-card.layout-dragging{outline:2px dashed rgba(241,207,120,.8);outline-offset:3px;opacity:.72}
+.summon-card.layout-drop-target{box-shadow:0 0 0 2px #f1cf78,0 0 30px rgba(241,207,120,.18)!important}
+.summon-drag-ghost{position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);padding:9px 13px;border:1px solid #f1cf78;border-radius:9px;background:rgba(20,13,9,.96);color:#f4dfab;font-weight:bold;font-size:12px;box-shadow:0 14px 40px rgba(0,0,0,.55);max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.summon-layout-hint{width:100%;color:#8f7b62;font-size:10px;margin-top:4px}
+@media(max-width:760px){.summon-layout-controls{top:6px;right:6px}.summon-layout-btn{font-size:9px;padding:5px 6px}.summon-info{padding-top:36px}}
