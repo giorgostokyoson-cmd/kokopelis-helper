@@ -1,7 +1,7 @@
-const CACHE = 'kokopelis-v5-core-6';
+const CACHE = 'kokopelis-v5-core-7';
 const CORE = [
-  './', './index.html', './styles.css', './roll-persistent.css', './characters.css', './summon-collapse.css?v=531',
-  './app.js', './roll-persistent.js', './characters.js', './summon-collapse.js?v=531', './manifest.webmanifest',
+  './', './index.html', './styles.css', './roll-persistent.css', './characters.css', './summon-collapse.css?v=532',
+  './app.js', './roll-persistent.js', './characters.js', './summon-collapse.js?v=532', './hp-controls.js?v=540', './manifest.webmanifest',
   './icons/kokopelis-face-192.jpg','./icons/kokopelis-face-512.jpg','./icons/kokopelis-face-maskable-512.jpg',
   './assets/sheet.jpg'
 ];
