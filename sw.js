@@ -1,6 +1,6 @@
-const CACHE = 'kokopelis-v5-core-1';
+const CACHE = 'kokopelis-v5-core-2';
 const CORE = [
-  './', './index.html', './styles.css', './app.js', './manifest.webmanifest',
+  './', './index.html', './styles.css', './roll-persistent.css', './app.js', './roll-persistent.js', './manifest.webmanifest',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./icons/apple-touch-icon.png',
   './assets/sheet.jpg'
 ];
