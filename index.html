@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="summon-collapse.css?v=532">
 <link rel="stylesheet" href="summon-layout.css?v=550">
 <link rel="stylesheet" href="entelques-spell-read.css?v=560">
+<link rel="stylesheet" href="character-redesign.css?v=600">
 </head>
 <body>
 <div id="rollFx" class="roll-fx" aria-live="polite"></div>
@@ -37,6 +38,7 @@
   <div class="brand"><span class="brand-mark">✦</span><div><b>Kokopelis</b><small>Combat Companion</small></div></div>
   <nav class="page-tabs">
     <button class="page-tab active" data-page="character">Character</button>
+    <button class="page-tab" data-page="skills-saves">Skills & Saving Throws</button>
     <button class="page-tab" data-page="summons">Summons</button>
     <button class="page-tab" data-page="characters">Characters</button>
   </nav>
@@ -51,6 +53,7 @@
 </header>
 <main>
 <section id="character" class="page active"></section>
+<section id="skills-saves" class="page"></section>
 <section id="summons" class="page"></section>
 <section id="characters" class="page"></section>
 </main>
@@ -58,7 +61,7 @@
   <button onclick="mobileGo('combat')"><span>⚔</span><b>Combat</b></button>
   <button onclick="mobileGo('resources')"><span>✦</span><b>Resources</b></button>
   <button onclick="mobileGo('summons')"><span>♟</span><b>Summons</b></button>
-  <button onclick="mobileGo('sheet')"><span>📜</span><b>Sheet</b></button>
+  <button onclick="activatePage('skills-saves');window.scrollTo({top:0,behavior:'smooth'})"><span>🎲</span><b>Skills</b></button>
 </nav>
 <input id="importFile" type="file" accept=".json" hidden>
 <script src="app.js"></script>
@@ -68,5 +71,6 @@
 <script src="hp-controls.js?v=540"></script>
 <script src="summon-layout.js?v=550"></script>
 <script src="entelques-spell-read.js?v=560"></script>
+<script src="character-redesign.js?v=600"></script>
 </body>
 </html>
