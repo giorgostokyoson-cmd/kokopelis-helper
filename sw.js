@@ -1,8 +1,8 @@
-const CACHE = 'kokopelis-v6-core-10';
+const CACHE = 'kokopelis-v6-core-11';
 const CORE = [
-  './', './index.html', './styles.css', './roll-persistent.css', './characters.css', './summon-collapse.css?v=532', './summon-layout.css?v=550', './entelques-spell-read.css?v=560', './character-redesign.css?v=600',
-  './app.js', './roll-persistent.js', './characters.js', './summon-collapse.js?v=532', './hp-controls.js?v=540', './summon-layout.js?v=550', './entelques-spell-read.js?v=560', './character-redesign.js?v=600', './manifest.webmanifest',
-  './icons/kokopelis-face-192.jpg','./icons/kokopelis-face-512.jpg','./icons/kokopelis-face-maskable-512.jpg',
+  './', './index.html', './styles.css', './roll-persistent.css', './characters.css', './summon-collapse.css?v=532', './summon-layout.css?v=550', './entelques-spell-read.css?v=560', './character-redesign.css?v=620',
+  './app.js', './roll-persistent.js', './characters.js', './summon-collapse.js?v=532', './hp-controls.js?v=540', './summon-layout.js?v=550', './entelques-spell-read.js?v=560', './character-redesign.js?v=620', './manifest.webmanifest',
+  './icons/kokopelis-face-192.jpg','./icons/kokopelis-face-512.jpg','./icons/kokopelis-face-maskable-512.jpg','./icons/icon-512.png',
   './assets/sheet.jpg'
 ];
 

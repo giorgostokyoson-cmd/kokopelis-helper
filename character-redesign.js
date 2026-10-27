@@ -1,4 +1,4 @@
-/* V6.1 — compact Character page + reliable clickable Skills & Saving Throws */
+/* V6.2 — compact Character page + reliable clickable Skills & Saving Throws */
 (function(){
   const SAVE_ORDER=['STR','DEX','CON','INT','WIS','CHA'];
   const SAVE_NAMES={STR:'Strength',DEX:'Dexterity',CON:'Constitution',INT:'Intelligence',WIS:'Wisdom',CHA:'Charisma'};
@@ -14,7 +14,7 @@
     const score=(key)=>`<div class="kokopelis-ability"><label>${key}</label><input type="number" value="${a[key]}" onchange="setAbilityScore('${key}',this.value)" aria-label="${SAVE_NAMES[key]}"><b>${sign(abilityMod(key))}</b></div>`;
     return `<section class="kokopelis-profile">
       <div class="kokopelis-profile-hero">
-        <img src="icons/kokopelis-face-512.jpg" alt="Kokopelis portrait" decoding="async">
+        <img src="icons/icon-512.png" alt="Kokopelis portrait" decoding="async">
         <div class="kokopelis-profile-title"><h1>Kokopelis</h1><p>Kokopelis - Half Elf - Fighter Level ${level()}</p></div>
       </div>
       <div class="kokopelis-profile-stats">${SAVE_ORDER.map(score).join('')}</div>
