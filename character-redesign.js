@@ -15,7 +15,7 @@
     return `<section class="kokopelis-profile">
       <div class="kokopelis-profile-hero">
         <img src="icons/kokopelis-face-512.jpg" alt="Kokopelis portrait">
-        <div class="kokopelis-profile-title"><h1>Kokopelis</h1><p>Half Elf • Fighter Level ${level()}</p></div>
+        <div class="kokopelis-profile-title"><h1>Kokopelis</h1><p>Kokopelis - Half Elf - Fighter Level ${level()}</p></div>
       </div>
       <div class="kokopelis-profile-stats">${SAVE_ORDER.map(score).join('')}</div>
       <div class="kokopelis-profile-meta">
@@ -70,7 +70,7 @@
 
     host.innerHTML=`<div class="skills-saves-page">
       <div class="ss-page-head">
-        <div><h1>Skills & Saving Throws</h1><p>Kokopelis • Half Elf • Fighter Level ${level()} • click any Roll button to use the existing d20 popup.</p></div>
+        <div><h1>Skills & Saving Throws</h1><p>Kokopelis - Half Elf - Fighter Level ${level()} • click any Roll button to use the existing d20 popup.</p></div>
         <div class="ss-passive">Passive Perception <b>${10+skillBonus('Perception')}</b></div>
       </div>
       <section class="ss-panel">
