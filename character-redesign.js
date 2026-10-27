@@ -1,4 +1,4 @@
-/* V6.0 — compact Character page + dedicated Skills & Saving Throws tab */
+/* V6.1 — compact Character page + reliable clickable Skills & Saving Throws */
 (function(){
   const SAVE_ORDER=['STR','DEX','CON','INT','WIS','CHA'];
   const SAVE_NAMES={STR:'Strength',DEX:'Dexterity',CON:'Constitution',INT:'Intelligence',WIS:'Wisdom',CHA:'Charisma'};
@@ -14,7 +14,7 @@
     const score=(key)=>`<div class="kokopelis-ability"><label>${key}</label><input type="number" value="${a[key]}" onchange="setAbilityScore('${key}',this.value)" aria-label="${SAVE_NAMES[key]}"><b>${sign(abilityMod(key))}</b></div>`;
     return `<section class="kokopelis-profile">
       <div class="kokopelis-profile-hero">
-        <img src="icons/kokopelis-face-512.jpg" alt="Kokopelis portrait">
+        <img src="icons/kokopelis-face-512.jpg" alt="Kokopelis portrait" decoding="async">
         <div class="kokopelis-profile-title"><h1>Kokopelis</h1><p>Kokopelis - Half Elf - Fighter Level ${level()}</p></div>
       </div>
       <div class="kokopelis-profile-stats">${SAVE_ORDER.map(score).join('')}</div>
@@ -42,35 +42,57 @@
     if(oldSkills)oldSkills.remove();
   }
 
+  function doRoll(label,bonus){
+    if(typeof window.rollD20==='function') return window.rollD20(label,bonus);
+    if(typeof rollD20==='function') return rollD20(label,bonus);
+  }
+
+  function wireRollTargets(host){
+    host.querySelectorAll('.ss-skill').forEach(row=>{
+      const skill=row.dataset.skill;
+      const fire=()=>doRoll(skill,skillBonus(skill));
+      row.addEventListener('click',e=>{if(e.target.closest('button'))return;fire();});
+      row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fire();}});
+      row.querySelector('.ss-roll')?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();fire();});
+    });
+    host.querySelectorAll('.ss-save').forEach(row=>{
+      const key=row.dataset.save;
+      const fire=()=>doRoll(`${key} Save`,saveBonus(key));
+      row.addEventListener('click',e=>{if(e.target.closest('button'))return;fire();});
+      row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fire();}});
+      row.querySelector('.ss-roll')?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();fire();});
+    });
+  }
+
   function renderSkillsSaves(){
     const host=document.getElementById('skills-saves');
     if(!host)return;
     const skills=ALL_SKILLS.map(s=>{
       const prof=profSkills().includes(s);
       const bonus=skillBonus(s);
-      return `<div class="ss-skill ${prof?'prof':''}">
+      return `<div class="ss-skill ${prof?'prof':''}" data-skill="${esc(s)}" role="button" tabindex="0" aria-label="Roll ${esc(s)} ${sign(bonus)}">
         <div class="ss-skill-icon">${SKILL_MARK[s]||'✦'}</div>
         <div class="ss-skill-name"><b>${esc(s)}${prof?'<span class="ss-prof-tag">PROF</span>':''}</b><span>${skillMap[s]}</span></div>
         <span class="ss-bonus">${sign(bonus)}</span>
-        <button class="btn ss-roll" onclick="rollD20(${JSON.stringify(s)},${bonus})">Roll</button>
+        <button type="button" class="btn ss-roll">Roll</button>
       </div>`;
     }).join('');
 
     const saves=SAVE_ORDER.map(key=>{
       const bonus=saveBonus(key);
       const prof=BASE.savingProf.includes(key);
-      return `<div class="ss-save">
+      return `<div class="ss-save" data-save="${key}" role="button" tabindex="0" aria-label="Roll ${SAVE_NAMES[key]} save ${sign(bonus)}">
         <div class="abbr">${key}</div>
         <b>${SAVE_NAMES[key]}</b>
         <small>${prof?'Proficient save':'Saving throw'}</small>
         <span class="ss-bonus">${sign(bonus)}</span><br>
-        <button class="btn ss-roll" onclick="rollD20('${key} Save',${bonus})">Roll</button>
+        <button type="button" class="btn ss-roll">Roll</button>
       </div>`;
     }).join('');
 
     host.innerHTML=`<div class="skills-saves-page">
       <div class="ss-page-head">
-        <div><h1>Skills & Saving Throws</h1><p>Kokopelis - Half Elf - Fighter Level ${level()} • click any Roll button to use the existing d20 popup.</p></div>
+        <div><h1>Skills & Saving Throws</h1><p>Kokopelis - Half Elf - Fighter Level ${level()} • click a row or its Roll button to roll d20.</p></div>
         <div class="ss-passive">Passive Perception <b>${10+skillBonus('Perception')}</b></div>
       </div>
       <section class="ss-panel">
@@ -82,6 +104,7 @@
         <div class="ss-saves-grid">${saves}</div>
       </section>
     </div>`;
+    wireRollTargets(host);
   }
 
   const previousRenderCharacter=window.renderCharacter;

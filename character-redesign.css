@@ -1,27 +1,58 @@
-/* V6.0 — compact Character + dedicated Skills & Saving Throws */
+/* V6.1 — compact portrait, combat-first Character page, clickable Skills & Saves */
+
+/* Character page: portrait/profile is now deliberately secondary to combat. */
+#character .character-layout{
+  grid-template-columns:minmax(340px,520px) minmax(0,1fr);
+  gap:16px;
+  max-width:1800px;
+}
 .kokopelis-profile{
   align-self:start;
+  position:sticky;
+  top:77px;
   background:linear-gradient(180deg,rgba(37,20,13,.98),rgba(18,10,8,.98));
   border:1px solid #6d431c;
   border-radius:16px;
   overflow:hidden;
   box-shadow:0 16px 44px rgba(0,0,0,.28),inset 0 0 0 1px rgba(230,171,69,.05);
 }
-.kokopelis-profile-hero{position:relative;min-height:430px;background:#100a08;overflow:hidden}
-.kokopelis-profile-hero img{width:100%;height:100%;min-height:430px;max-height:610px;object-fit:cover;object-position:center 25%;display:block;filter:saturate(.92) contrast(1.04)}
-.kokopelis-profile-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(16,8,6,.22) 67%,rgba(16,8,6,.96) 100%);pointer-events:none}
-.kokopelis-profile-title{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;text-shadow:0 2px 8px #000}
-.kokopelis-profile-title h1{margin:0;color:#f0cf77;font-size:32px;line-height:1;font-variant:small-caps;letter-spacing:.02em}
-.kokopelis-profile-title p{margin:8px 0 0;color:#e6ba69;font-size:14px}
-.kokopelis-profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px}
-.kokopelis-ability{background:rgba(20,12,9,.78);border:1px solid #5b3b20;border-radius:10px;text-align:center;padding:10px 7px}
-.kokopelis-ability label{display:block;color:#c69a55;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
-.kokopelis-ability input{width:72px;max-width:100%;border:0;border-bottom:1px solid #72502b;background:transparent;color:#f3dfaa;text-align:center;font-family:inherit;font-weight:700;font-size:24px;outline:none}
-.kokopelis-ability b{display:block;color:#a9dc85;margin-top:4px;font-size:13px}
-.kokopelis-profile-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px 14px}
-.kokopelis-meta-box{border:1px solid #4f351e;border-radius:10px;background:#170e0b;padding:10px;text-align:center}
-.kokopelis-meta-box span{display:block;color:#b78d52;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
-.kokopelis-meta-box b{display:block;color:#f0cf77;font-size:18px;margin-top:3px}
+.kokopelis-profile-hero{position:relative;height:270px;min-height:270px;background:#100a08;overflow:hidden}
+.kokopelis-profile-hero img{
+  width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center 21%;
+  filter:none;
+  image-rendering:auto;
+}
+.kokopelis-profile-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(16,8,6,.12) 62%,rgba(16,8,6,.94) 100%);pointer-events:none}
+.kokopelis-profile-title{position:absolute;left:18px;right:18px;bottom:15px;z-index:2;text-shadow:0 2px 8px #000}
+.kokopelis-profile-title h1{margin:0;color:#f0cf77;font-size:29px;line-height:1;font-variant:small-caps;letter-spacing:.02em}
+.kokopelis-profile-title p{margin:7px 0 0;color:#e6ba69;font-size:13px}
+
+/* Make the actual stats the visual focus of the profile card. */
+.kokopelis-profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:14px}
+.kokopelis-ability{background:rgba(20,12,9,.82);border:1px solid #6a4725;border-radius:10px;text-align:center;padding:12px 8px;min-height:86px}
+.kokopelis-ability label{display:block;color:#d1a75c;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.kokopelis-ability input{width:78px;max-width:100%;border:0;border-bottom:1px solid #806039;background:transparent;color:#f6e3ad;text-align:center;font-family:inherit;font-weight:700;font-size:28px;outline:none}
+.kokopelis-ability b{display:block;color:#a9dc85;margin-top:4px;font-size:14px}
+.kokopelis-profile-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:0 14px 14px}
+.kokopelis-meta-box{border:1px solid #5b3d21;border-radius:10px;background:#170e0b;padding:11px 8px;text-align:center;min-height:64px}
+.kokopelis-meta-box span{display:block;color:#bf985c;font-size:9px;text-transform:uppercase;letter-spacing:.09em}
+.kokopelis-meta-box b{display:block;color:#f0cf77;font-size:20px;margin-top:4px}
+
+/* Give Fight Vitals / Quick Attack more room and stronger hierarchy. */
+#character .combat-stack{gap:14px;min-width:0}
+#character .card-head{padding:13px 15px}
+#character .card-head h3{font-size:20px}
+#character .card-body{padding:15px}
+#character .vital-grid{gap:10px}
+#character .vital{padding:12px 10px}
+#character .vital label{font-size:10px}
+#character .inline-hp input,#character .inline-single{font-size:22px}
+#character .attack-main{grid-template-columns:minmax(260px,1fr) auto;gap:18px}
+#character .attack-main .numbers{font-size:14px;line-height:1.5;min-width:0}
+#character .attack-main .numbers b{font-size:21px}
+#character .attack-buttons{gap:8px}
+#character .big-attack{font-size:19px;padding:13px 20px}
 
 /* Dedicated skills page */
 .skills-saves-page{max-width:1500px;margin:0 auto;padding:14px 12px 40px}
@@ -35,28 +66,37 @@
 .ss-panel-head h2{margin:0;color:#f0cf77;font-size:22px;font-variant:small-caps}
 .ss-panel-head small{display:block;color:#aa8a63;margin-top:2px}
 .ss-skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:12px}
-.ss-skill{display:grid;grid-template-columns:36px minmax(0,1fr) auto auto;align-items:center;gap:9px;border:1px solid #49331f;border-radius:10px;background:rgba(17,11,9,.76);padding:8px 9px;min-height:58px}
+.ss-skill{display:grid;grid-template-columns:36px minmax(0,1fr) auto auto;align-items:center;gap:9px;border:1px solid #49331f;border-radius:10px;background:rgba(17,11,9,.76);padding:8px 9px;min-height:58px;cursor:pointer;transition:.14s ease}
+.ss-skill:hover,.ss-skill:focus-visible{border-color:#a36a2f;background:linear-gradient(90deg,rgba(100,56,24,.28),rgba(17,11,9,.84));transform:translateY(-1px);outline:none}
 .ss-skill.prof{border-color:#6c5227;background:linear-gradient(90deg,rgba(72,51,20,.18),rgba(17,11,9,.78))}
 .ss-skill-icon{width:32px;height:32px;border:1px solid #59401f;border-radius:8px;display:grid;place-items:center;color:#d8a54e;background:#21140d;font-size:13px;font-weight:800}
 .ss-skill-name b{display:block;color:#f4dfaa;font-size:14px}.ss-skill-name span{display:block;color:#a9895e;font-size:10px;margin-top:2px}
 .ss-prof-tag{color:#d6bb72;font-size:9px;letter-spacing:.08em;margin-left:5px}
 .ss-bonus{min-width:52px;text-align:center;border:1px solid #45633a;background:#172318;color:#aeea8a;border-radius:8px;padding:7px 9px;font-weight:800;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.ss-roll{border:1px solid #8a3a25!important;background:#35150f!important;color:#f7dbaa!important;min-width:52px}
+.ss-roll{border:1px solid #a7472d!important;background:#421a12!important;color:#f7dbaa!important;min-width:56px;position:relative;z-index:2}
+.ss-roll:hover{border-color:#e17950!important;background:#5a2116!important}
 .ss-saves-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;padding:12px}
-.ss-save{border:1px solid #513921;border-radius:10px;background:#160d0a;text-align:center;padding:12px 8px}
+.ss-save{border:1px solid #513921;border-radius:10px;background:#160d0a;text-align:center;padding:12px 8px;cursor:pointer;transition:.14s ease}
+.ss-save:hover,.ss-save:focus-visible{border-color:#9b672f;background:#21120d;transform:translateY(-1px);outline:none}
 .ss-save .abbr{width:38px;height:38px;margin:0 auto 8px;border:1px solid #6b4926;border-radius:50%;display:grid;place-items:center;color:#e2b85d;font-weight:900}
 .ss-save b{display:block;color:#f2d99d}.ss-save small{display:block;color:#9e8059;margin:3px 0 7px}.ss-save .ss-bonus{display:inline-block;margin-bottom:8px}
 
-/* Main character no longer needs the old skills card once skills live in their own tab. */
 #character #skillsCard{display:none!important}
 
+@media(max-width:1100px){
+  #character .character-layout{grid-template-columns:1fr}
+  .kokopelis-profile{position:relative;top:auto;max-width:none}
+  .kokopelis-profile-hero{height:300px;min-height:300px}
+}
 @media(max-width:900px){
-  .kokopelis-profile-hero,.kokopelis-profile-hero img{min-height:340px;max-height:470px}
   .ss-skills-grid{grid-template-columns:1fr}
   .ss-saves-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ss-page-head{align-items:flex-start;flex-direction:column}
+  #character .attack-main{grid-template-columns:1fr}
+  #character .attack-buttons{justify-content:flex-start}
 }
 @media(max-width:520px){
+  .kokopelis-profile-hero{height:240px;min-height:240px}
   .kokopelis-profile-stats{grid-template-columns:repeat(2,1fr)}
   .kokopelis-profile-meta{grid-template-columns:repeat(2,1fr)}
   .ss-skill{grid-template-columns:30px minmax(0,1fr) auto auto;gap:6px;padding:7px}
