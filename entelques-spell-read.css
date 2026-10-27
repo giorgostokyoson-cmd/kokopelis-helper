@@ -1,0 +1,56 @@
+/* V5.6 — Entelques spell Read popup */
+.entelques-read-btn{
+  border:1px solid #8f342d;
+  background:#25120f;
+  color:#e9a49c;
+  border-radius:6px;
+  padding:5px 8px;
+  font-size:10px;
+  line-height:1;
+  white-space:nowrap;
+}
+.entelques-read-btn:hover{border-color:#d86657;color:#ffd1ca;background:#321713}
+.spell-read-actions{display:flex;gap:5px;align-items:center;flex-shrink:0}
+
+.spell-read-overlay{
+  position:fixed;
+  inset:0;
+  z-index:230;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(5,3,2,.72);
+  backdrop-filter:blur(3px);
+}
+.spell-read-overlay.open{display:flex}
+.spell-read-card{
+  width:min(620px,94vw);
+  max-height:min(78vh,720px);
+  overflow:auto;
+  border:1px solid rgba(208,166,79,.55);
+  border-radius:14px;
+  background:radial-gradient(circle at 50% 0%,rgba(80,30,20,.32),transparent 38%),linear-gradient(180deg,#21140f,#130d0a 72%);
+  box-shadow:0 28px 90px rgba(0,0,0,.72),0 0 34px rgba(142,61,40,.18);
+  color:#eadbb8;
+}
+.spell-read-head{padding:15px 17px 12px;border-bottom:1px solid rgba(208,166,79,.22)}
+.spell-read-head h3{margin:0;color:#f1cf78;font-size:21px;font-variant:small-caps;letter-spacing:.035em}
+.spell-read-level{margin-top:3px;color:#aa9272;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.spell-read-body{padding:15px 17px 17px}
+.spell-read-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:13px}
+.spell-read-meta div{padding:8px 9px;border:1px solid rgba(255,255,255,.06);border-radius:8px;background:rgba(255,255,255,.025)}
+.spell-read-meta span{display:block;color:#8f7b62;font-size:9px;text-transform:uppercase;letter-spacing:.08em}
+.spell-read-meta b{display:block;margin-top:3px;color:#f0d69c;font-size:12px}
+.spell-read-effect{font-size:13px;line-height:1.55;color:#e3d0aa;white-space:pre-line}
+.spell-read-upcast{margin-top:12px;padding:10px 11px;border-left:3px solid #9b392f;border-radius:5px;background:rgba(142,50,39,.09);font-size:12px;line-height:1.45;color:#d8c4a4}
+.spell-read-source{margin-top:12px;color:#7f6f5a;font-size:9px;text-align:center}
+.spell-read-hint{margin-top:8px;color:#9b876b;font-size:10px;text-align:center;letter-spacing:.03em}
+
+@media(max-width:600px){
+  .spell-read-overlay{padding:10px;align-items:center}
+  .spell-read-card{width:100%;max-height:82dvh}
+  .spell-read-meta{grid-template-columns:1fr 1fr}
+  .spell-read-head h3{font-size:19px}
+  .spell-read-effect{font-size:12px}
+}
