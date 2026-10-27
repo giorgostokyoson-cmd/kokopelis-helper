@@ -1,7 +1,7 @@
-const CACHE = 'kokopelis-v5-core-8';
+const CACHE = 'kokopelis-v5-core-9';
 const CORE = [
-  './', './index.html', './styles.css', './roll-persistent.css', './characters.css', './summon-collapse.css?v=532', './summon-layout.css?v=550',
-  './app.js', './roll-persistent.js', './characters.js', './summon-collapse.js?v=532', './hp-controls.js?v=540', './summon-layout.js?v=550', './manifest.webmanifest',
+  './', './index.html', './styles.css', './roll-persistent.css', './characters.css', './summon-collapse.css?v=532', './summon-layout.css?v=550', './entelques-spell-read.css?v=560',
+  './app.js', './roll-persistent.js', './characters.js', './summon-collapse.js?v=532', './hp-controls.js?v=540', './summon-layout.js?v=550', './entelques-spell-read.js?v=560', './manifest.webmanifest',
   './icons/kokopelis-face-192.jpg','./icons/kokopelis-face-512.jpg','./icons/kokopelis-face-maskable-512.jpg',
   './assets/sheet.jpg'
 ];
